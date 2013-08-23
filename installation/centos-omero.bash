@@ -1,6 +1,9 @@
 #!/bin/bash
 echo `hostname`
 
+# Using CentOS-6.4-x86_64-minimal as a base
+ARCH=`uname -m`
+
 # sysadmin tools
 yum -y install screen tmux htop expect bonnie++ tree
 
@@ -9,22 +12,22 @@ yum -y install java-1.7.0-openjdk
 yum -y install java-1.7.0-openjdk-devel
 
 # OMERO deps
-yum -y install python-devel.x86_64 python-pip.noarch git gcc-c++.x86_64
-yum -y install python-imaging python-matplotlib numpy
+yum -y localinstall http://download.fedoraproject.org/pub/epel/6/$ARCH/epel-release-6-8.noarch.rpm
+
+yum -y install python-devel python-pip git gcc-c++ python-imaging python-matplotlib numpy hdf5 hdf5-devel
+
 pip-python install virtualenv
 pip-python install genshi
-
-yum -y install hdf5.x86_64 hdf5-devel.x86_64
 
 pip-python install numexpr==1.4.2
 pip-python install cython					
 pip-python install tables==2.4.0
 
 # Postgres 9.2
-yum -y localinstall http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm  --nogpgcheck
+yum -y localinstall http://yum.postgresql.org/9.2/redhat/rhel-6-$ARCH/pgdg-centos92-9.2-6.noarch.rpm  --nogpgcheck
 
-# Install the version from just downloaded
-yum -y install postgresql92-server.x86_64 postgresql92-contrib.x86_64
+# Install the version from the new repo
+yum -y install postgresql92-server postgresql92-contrib
 chkconfig  postgresql-9.2 on
 service postgresql-9.2  initdb en_US.UTF-8
 service postgresql-9.2 start
@@ -51,7 +54,8 @@ enabled=1
 gpgcheck=1
 gpgkey=http://www.zeroc.com/download/RPM-GPG-KEY-zeroc-release' > /etc/yum.repos.d/zeroc_ice.repo
 
-yum -y install db48-utils.x86_64 ice.noarch ice-java-devel.x86_64 ice-libs.x86_64 ice-python.x86_64  ice-python-devel.x86_64 ice-servers.x86_64 ice-sqldb.x86_64 ice-utils.x86_64 mcpp-devel.x86_64 ice-c++-devel.x86_64
+yum -y install db48-utils ice.noarch ice-java-devel ice-libs ice-python ice-python-devel ice-servers ice-sqldb ice-utils mcpp-devel ice-c++-devel
+
 
 # create/append to /etc/profile.d/omero.sh
 echo export ICE_HOME=/usr/share/Ice-3.4.2 >> /etc/profile.d/omero.sh
