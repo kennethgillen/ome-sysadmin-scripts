@@ -5,7 +5,7 @@ echo `hostname`
 ARCH=`uname -m`
 
 # sysadmin tools
-yum -y install screen tmux htop expect bonnie++ tree
+yum -y install screen tmux htop expect bonnie++ tree unzip
 
 # Java
 yum -y install java-1.7.0-openjdk
@@ -45,7 +45,7 @@ chkconfig --add nginx
 chkconfig --level 35 nginx on
 service nginx start
 
-yum -y install mod_fastcgi
+#yum -y install mod_fastcgi
 
 echo '[zeroc-ice]
 name=Ice 3.4 for RHEL $releasever - $basearch
@@ -61,7 +61,7 @@ yum -y install db48-utils ice.noarch ice-java-devel ice-libs ice-python ice-pyth
 echo export ICE_HOME=/usr/share/Ice-3.4.2 >> /etc/profile.d/omero.sh
 
 #Pythonpath
-echo export PYTHONPATH=$PYTHONPATH:/usr/lib64/python2.6/site-packages/Ice/ >> /etc/profile.d/omero.sh
+#echo export PYTHONPATH=$PYTHONPATH:/usr/lib64/python2.6/site-packages/Ice/ >> /etc/profile.d/omero.sh
 
 # Update postgres auth file
 cp /var/lib/pgsql/9.2/data/pg_hba.conf /var/lib/pgsql/9.2/data/pg_hba.conf.orig
