@@ -21,8 +21,7 @@ pip-python install cython
 pip-python install tables==2.4.0
 
 # Postgres 9.2
-wget http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm 
-rpm -i pgdg-centos92-9.2-6.noarch.rpm
+yum -y localinstall http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm  --nogpgcheck
 
 # Install the version from just downloaded
 yum -y install postgresql92-server.x86_64 postgresql92-contrib.x86_64

@@ -5,7 +5,7 @@ fi
 #Using vmware console, vm/guest/install vmware tools
 
 mount /dev/cdrom /mnt/cdrom
-cp –p /mnt/cdrom/VMwareTools-4.0.0-261974.i386.rpm /tmp/
+cp -p  /mnt/cdrom/VMwareTools-4.0.0-261974.i386.rpm /tmp/
 umount /mnt/cdrom
 yum -y install gcc kernel-devel make
 rpm -Uvh /tmp/VMwareTools-4.0.0-261974.i386.rpm
