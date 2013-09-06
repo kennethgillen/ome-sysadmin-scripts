@@ -14,7 +14,7 @@ yum -y install java-1.7.0-openjdk-devel
 # OMERO deps
 yum -y localinstall http://download.fedoraproject.org/pub/epel/6/$ARCH/epel-release-6-8.noarch.rpm
 
-yum -y install python-devel python-pip git gcc-c++ python-imaging python-matplotlib numpy hdf5 hdf5-devel
+yum -y install python-devel python-pip git gcc-c++ python-imaging python-matplotlib numpy hdf5 hdf5-devel scipy
 
 pip-python install virtualenv
 pip-python install genshi
