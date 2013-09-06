@@ -64,6 +64,9 @@ echo export ICE_HOME=/usr/share/Ice-3.4.2 >> /etc/profile.d/omero.sh
 #echo export PYTHONPATH=$PYTHONPATH:/usr/lib64/python2.6/site-packages/Ice/ >> /etc/profile.d/omero.sh
 
 # Update postgres auth file
-cp /var/lib/pgsql/9.2/data/pg_hba.conf /var/lib/pgsql/9.2/data/pg_hba.conf.orig
-cd /var/lib/pgsql/9.2/data/
-echo "time to update pg_hba.conf"
+sed -i.orig '0,/^host.*/s//'\
+'host    all         all         127.0.0.1\/32          md5\n'\
+'host    all         all         ::1\/128               md5\n&/' \
+    /var/lib/pgsql/9.2/data/pg_hba.conf
+service postgresql-9.2 reload
+
