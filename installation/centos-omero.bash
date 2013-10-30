@@ -2,7 +2,11 @@
 echo `hostname`
 
 # sysadmin tools
-yum -y install screen tmux htop expect bonnie++ tree
+yum -y install screen tmux htop expect bonnie++ tree check-mk-agent zsh && chkconfig xinetd on
+
+#ome local
+yum -y install check-mk-agent
+chkconfig xinetd on
 
 # Java
 yum -y install java-1.7.0-openjdk
