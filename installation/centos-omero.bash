@@ -2,7 +2,7 @@
 echo `hostname`
 
 # sysadmin tools
-yum -y install screen tmux htop expect bonnie++ tree zsh 
+yum -y install screen tmux htop iotop expect bonnie++ tree zsh 
 
 #ome local
 yum -y install check-mk-agent
