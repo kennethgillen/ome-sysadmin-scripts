@@ -33,14 +33,7 @@ chkconfig  postgresql-9.2 on
 service postgresql-9.2  initdb en_US.UTF-8
 service postgresql-9.2 start
 
-# Nginx
-# Add Nginx repo
-echo '[nginx]
-name=nginx repo
-baseurl=http://nginx.org/packages/centos/6/$basearch/
-gpgcheck=0
-enabled=1' > /etc/yum.repos.d/nginx.repo
-# Install
+# Install nginx (after adding to SW Channel)
 yum -y install nginx
 chkconfig --add nginx
 chkconfig --level 35 nginx on
