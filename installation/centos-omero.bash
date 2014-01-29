@@ -24,14 +24,14 @@ pip-python install numexpr==1.4.2
 pip-python install cython					
 pip-python install tables==2.4.0
 
-# Postgres 9.2
-yum -y localinstall http://yum.postgresql.org/9.2/redhat/rhel-6-x86_64/pgdg-centos92-9.2-6.noarch.rpm  --nogpgcheck
+# Postgres 9.3
+yum -y localinstall http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos92-9.3-1.noarch.rpm  --nogpgcheck
 
 # Install the version from just downloaded
 yum -y install postgresql92-server.x86_64 postgresql92-contrib.x86_64
-chkconfig  postgresql-9.2 on
-service postgresql-9.2  initdb en_US.UTF-8
-service postgresql-9.2 start
+chkconfig  postgresql-9.3 on
+service postgresql-9.3  initdb en_US.UTF-8
+service postgresql-9.3 start
 
 # Install nginx (after adding to SW Channel)
 yum -y install nginx
@@ -57,6 +57,6 @@ echo export ICE_HOME=/usr/share/Ice-3.4.2 >> /etc/profile.d/omero.sh
 echo export PYTHONPATH=$PYTHONPATH:/usr/lib64/python2.6/site-packages/Ice/ >> /etc/profile.d/omero.sh
 
 # Update postgres auth file
-cp /var/lib/pgsql/9.2/data/pg_hba.conf /var/lib/pgsql/9.2/data/pg_hba.conf.orig
-cd /var/lib/pgsql/9.2/data/
+cp /var/lib/pgsql/9.3/data/pg_hba.conf /var/lib/pgsql/9.3/data/pg_hba.conf.orig
+cd /var/lib/pgsql/9.3/data/
 echo "time to update pg_hba.conf"
