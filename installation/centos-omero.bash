@@ -1,5 +1,6 @@
 #!/bin/bash
 echo `hostname`
+echo `date`
 
 # sysadmin tools
 yum -y install screen tmux htop iotop expect bonnie++ tree zsh 
