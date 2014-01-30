@@ -29,7 +29,7 @@ pip-python install tables==2.4.0
 yum -y localinstall http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos92-9.3-1.noarch.rpm  --nogpgcheck
 
 # Install the version from just downloaded
-yum -y install postgresql92-server.x86_64 postgresql92-contrib.x86_64
+yum -y install postgresql93-server.x86_64 postgresql93-contrib.x86_64
 chkconfig  postgresql-9.3 on
 service postgresql-9.3  initdb en_US.UTF-8
 service postgresql-9.3 start
@@ -59,5 +59,12 @@ echo export PYTHONPATH=$PYTHONPATH:/usr/lib64/python2.6/site-packages/Ice/ >> /e
 
 # Update postgres auth file
 cp /var/lib/pgsql/9.3/data/pg_hba.conf /var/lib/pgsql/9.3/data/pg_hba.conf.orig
-cd /var/lib/pgsql/9.3/data/
-echo "time to update pg_hba.conf"
+
+sed -i.orig '0,/^host.*/s//'\
+'host    all         all         127.0.0.1\/32          md5\n'\
+'host    all         all         ::1\/128               md5\n&/' \
+ /var/lib/pgsql/9.3/data/pg_hba.conf
+
+echo "updated pg_hba as follows:"
+cat /var/lib/pgsql/9.3/data/pg_hba.conf
+
