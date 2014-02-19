@@ -26,7 +26,7 @@ pip-python install cython
 pip-python install tables==2.4.0
 
 # Postgres 9.3
-yum -y localinstall http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos92-9.3-1.noarch.rpm  --nogpgcheck
+yum -y localinstall http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm  --nogpgcheck
 
 # Install the version from just downloaded
 yum -y install postgresql93-server.x86_64 postgresql93-contrib.x86_64
