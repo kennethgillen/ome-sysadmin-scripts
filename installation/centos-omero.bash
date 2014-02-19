@@ -68,3 +68,4 @@ sed -i.orig '0,/^host.*/s//'\
 echo "updated pg_hba as follows:"
 cat /var/lib/pgsql/9.3/data/pg_hba.conf
 
+service postgresql-9.3 restart
